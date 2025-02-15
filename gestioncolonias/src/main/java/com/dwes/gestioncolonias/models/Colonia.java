@@ -1,5 +1,12 @@
 package com.dwes.gestioncolonias.models;
 
+/**
+ * Clase Entidad de Colonia
+ * 
+ * @author José Antonio Pozo González IWC70842@educastur.es
+ *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
