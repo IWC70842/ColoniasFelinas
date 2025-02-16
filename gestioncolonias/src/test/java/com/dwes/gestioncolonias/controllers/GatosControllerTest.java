@@ -1,10 +1,10 @@
 package com.dwes.gestioncolonias.controllers;
 
 /**
- *  Test unitarios utilizando Mockito
+ * Clase de Test Unitarios para GatosController
  * 
- *  @author José Antonio Pozo González IWC70842@educastur.es
- *          Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ * @author José Antonio Pozo González IWC70842@educastur.es
+ *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -44,7 +44,7 @@ public class GatosControllerTest {
   GatosController gatosController;
 
   private Gato gato;
-  
+
   @BeforeEach
   void preparacion() {
     gato = new Gato();
@@ -59,7 +59,7 @@ public class GatosControllerTest {
     gato.setFechaSalida(LocalDate.of(2025, 2, 1));
     gato.setMotivoSalida("Adoptado");
   }
-  
+
   @Test
   void testDeleteGatoById() {
     when(gatosService.deleteGatoById(666L)).thenReturn(true);
@@ -72,12 +72,12 @@ public class GatosControllerTest {
 
   @Test
   void testDeleteGatoByIdError() {
-      when(gatosService.deleteGatoById(666L)).thenReturn(false);
+    when(gatosService.deleteGatoById(666L)).thenReturn(false);
 
-      String resultado = gatosController.deleteGatoById(666L);
+    String resultado = gatosController.deleteGatoById(666L);
 
-      assertEquals("Error, gato con id 666 no ha podido ser eliminado.", resultado);
-      verify(gatosService, times(1)).deleteGatoById(666L);
+    assertEquals("Error, gato con id 666 no ha podido ser eliminado.", resultado);
+    verify(gatosService, times(1)).deleteGatoById(666L);
   }
 
   @Test
@@ -118,13 +118,13 @@ public class GatosControllerTest {
 
   @Test
   void testUpdateGatoById() {
-     when(gatosService.updateGatoById(any(Gato.class), eq(666L))).thenReturn(gato);
+    when(gatosService.updateGatoById(any(Gato.class), eq(666L))).thenReturn(gato);
 
-        Gato resultado = gatosController.updateGatoById(gato, 666L);
+    Gato resultado = gatosController.updateGatoById(gato, 666L);
 
-        assertNotNull(resultado);
-        assertEquals("Siamés", resultado.getRaza());
-        verify(gatosService, times(1)).updateGatoById(any(Gato.class), eq(666L));
+    assertNotNull(resultado);
+    assertEquals("Siamés", resultado.getRaza());
+    verify(gatosService, times(1)).updateGatoById(any(Gato.class), eq(666L));
 
   }
 }

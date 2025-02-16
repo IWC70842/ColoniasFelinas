@@ -1,7 +1,7 @@
 package com.dwes.gestioncolonias.services;
 
 /**
- * Clase GatosService para el conexión de los gatos con el interface GatoRepository de JPA
+ * Clase GatosService para la conexión de los gatos con el interface GatoRepository de JPA
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
  *         Módulo de Desarrollo Wen en Entorno Servidor 24/25

@@ -1,7 +1,7 @@
 package com.dwes.gestioncolonias.services;
 
 /**
- * Clase ColoniaService para el conexión de las colonias con la interface ColoniaRepository de JPA
+ * Clase ColoniaService para la conexión de las colonias con la interface ColoniaRepository de JPA
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
  *         Módulo de Desarrollo Wen en Entorno Servidor 24/25

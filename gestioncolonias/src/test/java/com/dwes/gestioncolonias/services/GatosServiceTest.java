@@ -1,5 +1,12 @@
 package com.dwes.gestioncolonias.services;
 
+/**
+ * Clase de Test Unitarios para GatosService
+ * 
+ * @author José Antonio Pozo González IWC70842@educastur.es
+ *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ */
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -43,17 +50,16 @@ class GatosServiceTest {
 
   @Mock
   private ColoniaRepository coloniaRepository;
-  
+
   @InjectMocks
   private GatosService gatosService;
-  
+
   private Colonia colonia;
   private Gato gato;
-  
 
   @BeforeEach
-  void preparacion() {  
-    colonia=new Colonia();
+  void preparacion() {
+    colonia = new Colonia();
     colonia.setId(1L);
     colonia.setNombre("Colonia Test");
 
@@ -180,9 +186,9 @@ class GatosServiceTest {
   void testSaveGatoNull() {
     Gato gatoNulo = new Gato();
     Colonia colonia = new Colonia();
-    colonia.setId(1L); 
+    colonia.setId(1L);
     gatoNulo.setColonia(colonia);
-    
+
     when(coloniaRepository.findById(1L)).thenReturn(Optional.of(colonia));
     when(gatoRepository.save(any(Gato.class))).thenReturn(gatoNulo);
 
@@ -204,7 +210,6 @@ class GatosServiceTest {
     Gato gatoNulo = new Gato(); // Todo null
 
     when(gatoRepository.findById(666L)).thenReturn(Optional.of(gatoExistente));
-    
 
     Gato resultado = gatosService.updateGatoById(gatoNulo, 666L);
 
@@ -213,7 +218,7 @@ class GatosServiceTest {
     assertNull(resultado.getRaza());
     assertNull(resultado.getColores());
     verify(gatoRepository, times(1)).findById(666L);
-    
-  }  
+
+  }
 
 }

@@ -1,5 +1,12 @@
 package com.dwes.gestioncolonias.services;
 
+/**
+ * Clase de Test Unitarios para ColoniaService
+ * 
+ * @author José Antonio Pozo González IWC70842@educastur.es
+ *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ */
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
