@@ -52,7 +52,7 @@ class GatosServiceTest {
   
 
   @BeforeEach
-  void setUp() {  
+  void preparacion() {  
     colonia=new Colonia();
     colonia.setId(1L);
     colonia.setNombre("Colonia Test");
