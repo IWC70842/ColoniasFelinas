@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.controllers;
  * Clase Controller de la gestión de los gatos proporcionando los endpoints de la API
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import java.util.List;
@@ -46,7 +46,7 @@ public class GatosController {
    *
    * @param id Identificador del gato en la base de datos.
    * @return Un objeto Optional que contiene el gato si se encuentra,
-   *         o vacío si no existe un gato con el ID proporcionado.
+   *         o vacío si no existe un gato con el Id proporcionado.
    */
   @GetMapping("/{id}")
   public Optional<Gato> getGatoById(@PathVariable("id") Long id) {
@@ -69,7 +69,7 @@ public class GatosController {
    *
    * @param id Identificador del gato que se desea eliminar.
    * @return Un mensaje de confirmación si la eliminación es exitosa o un mensaje
-   *         de error si no se encuentra un gato con el ID proporcionado.
+   *         de error si no se encuentra un gato con el Id proporcionado.
    */
   @DeleteMapping("/{id}")
   public String deleteGatoById(@PathVariable("id") Long id) {

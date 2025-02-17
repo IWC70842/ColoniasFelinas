@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.controllers;
  * Clase Controller de la gestión de las colonias proporcionando los endpoints de la API
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import java.util.ArrayList;
@@ -34,9 +34,9 @@ public class ColoniaController {
   private ColoniaService coloniaService;
 
   /**
-   * Método para obtener el listado de las colonias
+   * Obtiene la lista completa de colonias almacenadas en la base de datos.
    * 
-   * @return
+   * @return Un lista de objetos Colonia con todos los registros almacenados.
    */
   @GetMapping
   public List<Colonia> getColonias() {
@@ -44,10 +44,10 @@ public class ColoniaController {
   }
 
   /**
-   * Metodo para publicar una nueva colonia facilitando sus campos
+   * Almacena una nueva colonia en la base de datos.
    * 
-   * @param colonia
-   * @return
+   * @param colonia Objeto Colonia que se desea almacenar.
+   * @return El objeto Colonia almacenado con sus datos actualizados.
    */
   @PostMapping
   public Colonia colonia(@RequestBody Colonia colonia) {
@@ -55,11 +55,11 @@ public class ColoniaController {
   }
 
   /**
-   * Método para obtener un listado con todos los gatos que pertenecen en una
-   * colonia a partir de la id de la colonia
+   * Obtiene los gatos que pertenecen a una colonia con un identificador único.
    * 
-   * @param id Id de la colonia
-   * @return
+   * @param id Indentificador de la colonia en la base de datos.
+   * @return Una lista de objetos Gato que pertenecen a la colonia con el id
+   *         proporcionado.
    */
   @GetMapping("/{id}/gatos")
   public List<Gato> getGatosByColonia(@PathVariable Long id) {
@@ -72,10 +72,11 @@ public class ColoniaController {
   }
 
   /**
-   * Metodo para obtener los datos de una colonia en concreto a partir de su id
+   * Obtiene una colonia específica a partir de su identificador único.
    * 
-   * @param id Id de la colonia a obtener datos
-   * @return
+   * @param id Identificador de la colonia en la base de datos.
+   * @return Un objeto Optional que contiene la colonia si se encuentra, o vacío
+   *         si no existe una colonia con el Id proporcionado.
    */
   @GetMapping("/{id}")
   public Optional<Colonia> getColoniaById(@PathVariable("id") Long id) {
@@ -83,12 +84,12 @@ public class ColoniaController {
   }
 
   /**
-   * Método para actualizar los datos de una colonia facilitando los campos y su
-   * id
+   * Actualiza los datos de una colonia existente en la base de datos.
    * 
-   * @param request
-   * @param id      Id de la colonia a modificar
-   * @return
+   * @param request Objeto colonia con los datos actualizados.
+   * @param id      Indentificador de la colonia que se desea modificar en la base
+   *                de datos.
+   * @return El objeto Colonia con los datos actualizados tras la modificación.
    */
   @PutMapping("/{id}")
   public Colonia updateColonoiaById(@RequestBody Colonia request, @PathVariable("id") Long id) {
@@ -96,10 +97,11 @@ public class ColoniaController {
   }
 
   /**
-   * Método para eliminar una colonia facilitando la id de la colonia a eliminar
+   * Elimina una colonia de la base de datos a partir de su identificador.
    * 
-   * @param id Id de la colonia a eliminar
-   * @return
+   * @param id Indentificador de la colonia que se desea eliminar.
+   * @return Un mensaje de confirmación si la eliminación es exitosa o un mensaje
+   *         de error si no se encuentra un gato con el Id proporcionado.
    */
   @DeleteMapping("/{id}")
   public String deleteColoniaById(@PathVariable("id") Long id) {

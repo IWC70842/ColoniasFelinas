@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.controllers;
  * Clase de Test Unitarios para ColoniaController
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -49,7 +49,10 @@ public class ColoniaControllerTest {
 
   private Colonia colonia;
 
-    @BeforeEach
+  /**
+   * Configura un objeto Colonia de prueba antes de ejecutar cada test
+   */
+  @BeforeEach
   void preparacion() {
     colonia = new Colonia();
     colonia.setId(666L);
@@ -61,7 +64,10 @@ public class ColoniaControllerTest {
     colonia.setTamano("Grande");
     colonia.setGatos(null);
   }
-  
+
+  /**
+   * Eliminar una colonia existente con éxito.
+   */
   @Test
   void testDeleteColoniaById() {
     when(coloniaService.deleteColoniaById(666L)).thenReturn(true);
@@ -72,6 +78,9 @@ public class ColoniaControllerTest {
     verify(coloniaService, times(1)).deleteColoniaById(666L);
   }
 
+  /**
+   * Obtener una colonia por su Id con éxito.
+   */
   @Test
   void testGetColoniaById() {
     when(coloniaService.getColoniaById(666L)).thenReturn(Optional.of(colonia));
@@ -83,6 +92,9 @@ public class ColoniaControllerTest {
     verify(coloniaService, times(1)).getColoniaById(666L);
   }
 
+  /**
+   * Obtener la lista completa de colonias con éxito.
+   */
   @Test
   void testGetColonias() {
     List<Colonia> listaColonias = Arrays.asList(colonia);
@@ -96,6 +108,9 @@ public class ColoniaControllerTest {
 
   }
 
+  /**
+   * Obtener los gatos de una colonia con éxito.
+   */
   @Test
   void testGetGatosByColonia() {
     Gato gato1 = new Gato();
@@ -118,6 +133,10 @@ public class ColoniaControllerTest {
     verify(coloniaService, times(1)).getColoniaById(666L);
 
   }
+
+  /**
+   * Actualizar una colonia existente con éxito.
+   */
 
   @Test
   void testUpdateColonoiaById() {

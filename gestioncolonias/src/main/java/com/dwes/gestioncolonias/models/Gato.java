@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.models;
  * Clase Entidad de Gato
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import java.time.LocalDate;
@@ -70,7 +70,7 @@ public class Gato {
     private Colonia colonia;
 
 
-    // GETTERS Y SETTERS
+    // Getters y Setters de la entidad Gato
 
     public Colonia getColonia() {
       return colonia;

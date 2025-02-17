@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.models;
  * Clase Entidad de Colonia
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import java.util.ArrayList;
@@ -49,10 +49,11 @@ public class Colonia {
   private String tamano;
 
   @OneToMany(mappedBy = "colonia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  //Evitamos JSON anidados
   @JsonIgnore
   private List<Gato> gatos = new ArrayList<>();
 
-  // Setters y Getters
+  // Getters y Setters de la entidad Colonia
 
   public List<Gato> getGatos() {
     return gatos;

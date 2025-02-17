@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.services;
  * Clase de Test Unitarios para GatosService
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,6 +57,9 @@ class GatosServiceTest {
   private Colonia colonia;
   private Gato gato;
 
+  /**
+   * Configura un objeto Gato de prueba antes de ejecutar cada test
+   */
   @BeforeEach
   void preparacion() {
     colonia = new Colonia();
@@ -78,6 +81,9 @@ class GatosServiceTest {
     gato.setColonia(colonia);
   }
 
+  /**
+   * Obtener la lista completa de gatos almacenados con éxito.
+   */
   @Test
   void testGetGatosHappyPath() {
     when(gatoRepository.findAll()).thenReturn(Arrays.asList(gato));
@@ -90,6 +96,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findAll();
   }
 
+  /**
+   * Intentar obtener la lista de gatos cuando esta no existe.
+   */
   @Test
   void testGetGatosEmptyList() {
     when(gatoRepository.findAll()).thenReturn(Arrays.asList());
@@ -100,6 +109,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findAll();
   }
 
+  /**
+   * Obtener un gato por su Id con éxito.
+   */
   @Test
   void testGetGatoByIdHappyPath() {
     when(gatoRepository.findById(666L)).thenReturn(Optional.of(gato));
@@ -111,6 +123,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findById(666L);
   }
 
+  /**
+   * Intentar obtener un gato con un Id inexistente.
+   */
   @Test
   void testGetGatoByIdNotFound() {
     when(gatoRepository.findById(666L)).thenReturn(Optional.empty());
@@ -121,6 +136,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findById(666L);
   }
 
+  /**
+   * Guardar un gato con éxito en la base de datos.
+   */
   @Test
   void testSaveGatoHappyPath() {
     when(coloniaRepository.findById(1L)).thenReturn(Optional.of(colonia));
@@ -133,6 +151,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).save(any(Gato.class));
   }
 
+  /**
+   * Eliminar un gato existente con éxito.
+   */
   @Test
   void testDeleteGatoByIdHappyPath() {
     doNothing().when(gatoRepository).deleteById(666L);
@@ -143,6 +164,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).deleteById(666L);
   }
 
+  /**
+   * Intentar eliminar un gato que no existe en la base de datos.
+   */
   @Test
   void testDeleteGatoByIdError() {
     doThrow(new RuntimeException("Error al eliminar"))
@@ -154,6 +178,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).deleteById(666L);
   }
 
+  /**
+   * Actualizar un gato existente con éxito
+   */
   @Test
   void testUpdateGatoByIdHappyPath() {
     when(gatoRepository.findById(666L)).thenReturn(Optional.of(gato));
@@ -170,6 +197,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findById(666L);
   }
 
+   /**
+   * Intentar actualizar un gato con un Id inexistente
+   */
   @Test
   void testUpdateGatoByIdNotFound() {
     when(gatoRepository.findById(666L)).thenReturn(Optional.empty());
@@ -182,6 +212,9 @@ class GatosServiceTest {
     verify(gatoRepository, never()).save(any(Gato.class));
   }
 
+  /**
+   * Intentar guardar un gato con datos vacíos.
+   */
   @Test
   void testSaveGatoNull() {
     Gato gatoNulo = new Gato();
@@ -201,6 +234,9 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).save(any(Gato.class));
   }
 
+  /**
+   * Intentar actualizar un gato con datos vacíos.
+   */
   @Test
   void testUpdateGatoByIdNull() {
     Gato gatoExistente = new Gato();

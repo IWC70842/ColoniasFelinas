@@ -67,7 +67,7 @@ public class GatosControllerTest {
   }
 
   /**
-   * Eliminar un gato existente con éxito
+   * Eliminar un gato existente con éxito.
    */
   @Test
   void testDeleteGatoById() {
@@ -160,7 +160,7 @@ public class GatosControllerTest {
   }
 
   /**
-   * Obtener la lista completa de gatos con éxito
+   * Obtener la lista completa de gatos con éxito.
    */
   @Test
   void testGetGatos() {
@@ -204,7 +204,7 @@ public class GatosControllerTest {
   }
 
   /**
-   * Intentar actualizar un gato con un Id inexistente
+   * Intentar actualizar un gato con un Id inexistente.
    */
   @Test
   void testUpdateGatoByIdNoExistente() {

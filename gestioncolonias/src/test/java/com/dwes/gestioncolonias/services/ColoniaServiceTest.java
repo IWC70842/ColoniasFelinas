@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.services;
  * Clase de Test Unitarios para ColoniaService
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,6 +46,9 @@ public class ColoniaServiceTest {
 
   private Colonia colonia;
 
+  /**
+   * Configura un objeto Colonia de prueba antes de ejecutar cada test
+   */
   @BeforeEach
   void preparacion() {
     colonia = new Colonia();
@@ -54,6 +57,9 @@ public class ColoniaServiceTest {
 
   }
 
+  /**
+   * Eliminar una colonia existente con éxito.
+   */
   @Test
   void testDeleteColoniaById() {
     doNothing().when(coloniaRepository).deleteById(666L);
@@ -64,6 +70,9 @@ public class ColoniaServiceTest {
     verify(coloniaRepository, times(1)).deleteById(666L);
   }
 
+  /**
+   * Obtener una colonia por su Id con éxito.
+   */
   @Test
   void testGetColoniaById() {
     when(coloniaRepository.findById(666L)).thenReturn(Optional.of(colonia));
@@ -75,6 +84,9 @@ public class ColoniaServiceTest {
     verify(coloniaRepository, times(1)).findById(666L);
   }
 
+  /**
+   * Obtener la lista completa de colonias con éxito.
+   */
   @Test
   void testGetColonias() {
     when(coloniaRepository.findAll()).thenReturn(Arrays.asList(colonia));
@@ -88,6 +100,9 @@ public class ColoniaServiceTest {
 
   }
 
+  /**
+   * Guardar una colonia con éxito.
+   */
   @Test
   void testSaveColonia() {
     when(coloniaRepository.save(any(Colonia.class))).thenReturn(colonia);
@@ -99,6 +114,9 @@ public class ColoniaServiceTest {
     verify(coloniaRepository, times(1)).save(any(Colonia.class));
   }
 
+  /**
+   * Actualizar una colonia con éxito
+   */
   @Test
   void testUpdateColoniaById() {
     when(coloniaRepository.findById(666L)).thenReturn(Optional.of(colonia));

@@ -4,7 +4,7 @@ package com.dwes.gestioncolonias.services;
  * Clase GatosService para la conexión de los gatos con el interface GatoRepository de JPA
  * 
  * @author José Antonio Pozo González IWC70842@educastur.es
- *         Módulo de Desarrollo Wen en Entorno Servidor 24/25
+ *         Módulo de Desarrollo Web en Entorno Servidor 24/25
  */
 
 import java.util.List;
@@ -27,33 +27,31 @@ public class GatosService {
   @Autowired
   GatoRepository gatoRepository;
 
-  
-  /** 
-   * Método para obtener un listado completo de gatos
-   * 
-   * @return List<Gato>
+  /**
+   * Obtiene la lista completa de gatos almacenados en la base de datos.
+   *
+   * @return Una lista de objetos Gato con todos los registros almacenados.
    */
   public List<Gato> getGatos() {
     return (List<Gato>) gatoRepository.findAll();
   }
 
-  
-  /** 
-   * Método para encontrar un gato en concreto facilitando su ID
-   * 
-   * @param id Id del gato a encontrar
-   * @return Optional<Gato>
+  /**
+   * Obtiene un gato específico a partir de su identificador único.
+   *
+   * @param id Identificador del gato en la base de datos.
+   * @return Un objeto Optional que contiene el gato si se encuentra,
+   *         o vacío si no existe un gato con el Id proporcionado.
    */
   public Optional<Gato> getGatoById(Long id) {
     return gatoRepository.findById(id);
   }
 
-  
-  /** 
-   * Método para almacenar un gato en la base de datos 
-   * 
-   * @param gato 
-   * @return Gato
+  /**
+   * Almacena un nuevo gato en la base de datos.
+   *
+   * @param gato Objeto Gato que se desea almacenar.
+   * @return El objeto Gato almacenado con sus datos actualizados.
    */
   public Gato saveGato(Gato gato) {
     Optional<Colonia> coloniaOptional = coloniaRepository.findById(gato.getColonia().getId());
@@ -61,12 +59,12 @@ public class GatosService {
     return gatoRepository.save(gato);
   }
 
-  
-  /** 
-   * Método para eliminar un gato de la base de datos a partir de su id
-   * 
-   * @param id Id del gato a eliminar
-   * @return Boolean
+  /**
+   * Elimina un gato de la base de datos a partir de su identificador.
+   *
+   * @param id Identificador del gato que se desea eliminar.
+   * @return Devuelte verdadero si la eliminación es exitosa o falso si no se
+   *         encuentra un gato con el Id proporcionado.
    */
   public Boolean deleteGatoById(Long id) {
     try {
@@ -77,13 +75,12 @@ public class GatosService {
     }
   }
 
-  
-  /** 
-   * Método para actualizar los datos de un gato facilitando los campos y la Id del mismo
-   * 
-   * @param request
-   * @param id Id del gato a modificar
-   * @return Gato
+  /**
+   * Actualiza los datos de un gato existente en la base de datos.
+   *
+   * @param request Objeto Gato con los datos actualizados.
+   * @param id      Identificador del gato que se desea modificar.
+   * @return El objeto Gato con los datos actualizados tras la modificación.
    */
   public Gato updateGatoById(Gato request, Long id) {
     Gato gato = gatoRepository.findById(id).get();
