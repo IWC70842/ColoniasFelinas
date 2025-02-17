@@ -49,7 +49,7 @@ public class ColoniaControllerTest {
 
   private Colonia colonia;
 
-  @BeforeEach
+    @BeforeEach
   void preparacion() {
     colonia = new Colonia();
     colonia.setId(666L);
@@ -61,7 +61,7 @@ public class ColoniaControllerTest {
     colonia.setTamano("Grande");
     colonia.setGatos(null);
   }
-
+  
   @Test
   void testDeleteColoniaById() {
     when(coloniaService.deleteColoniaById(666L)).thenReturn(true);
