@@ -37,6 +37,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.dwes.gestioncolonias.constants.Pelaje;
 import com.dwes.gestioncolonias.constants.Sexo;
 import com.dwes.gestioncolonias.constants.Tamano;
+import com.dwes.gestioncolonias.constants.Salud;
 import com.dwes.gestioncolonias.models.Colonia;
 import com.dwes.gestioncolonias.models.Gato;
 import com.dwes.gestioncolonias.repositories.ColoniaRepository;
@@ -74,6 +75,7 @@ class GatosServiceTest {
     gato.setSexo(Sexo.MACHO);
     gato.setPelaje(Pelaje.CORTO);
     gato.setTamano(Tamano.MEDIANO);
+    gato.setSalud(Salud.SANO);
     gato.setFechaEntrada(LocalDate.of(2024, 1, 1));
     gato.setFechaSalida(LocalDate.of(2025, 2, 1));
     gato.setMotivoEntrada("Rescatado");

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import com.dwes.gestioncolonias.constants.Sexo;
 import com.dwes.gestioncolonias.constants.Tamano;
 import com.dwes.gestioncolonias.constants.Pelaje;
+import com.dwes.gestioncolonias.constants.Salud;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +32,9 @@ public class Gato {
   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column 
+    private String imagenGato;     
 
     @Column
     private Integer edadAproximada;
@@ -52,6 +56,10 @@ public class Gato {
     @Enumerated(EnumType.STRING)
     @Column
     private Tamano tamano;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Salud salud;
 
     @Column
     private LocalDate fechaEntrada; 
@@ -88,6 +96,14 @@ public class Gato {
       this.id = id;
     }
 
+    public String getImagenGato() {
+      return imagenGato;
+    }
+
+    public void setImagenGato(String imagenGato) {
+      this.imagenGato = imagenGato;
+    }
+    
     public Integer getEdadAproximada() {
       return edadAproximada;
     }
@@ -134,6 +150,14 @@ public class Gato {
 
     public void setTamano(Tamano tamano) {
       this.tamano = tamano;
+    }
+
+    public void setSalud(Salud salud){
+      this.salud =salud;
+    }
+
+    public Salud getSalud(){
+      return salud;
     }
 
     public LocalDate getFechaEntrada() {

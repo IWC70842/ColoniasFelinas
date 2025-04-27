@@ -33,6 +33,9 @@ public class Colonia {
   @Column
   private String nombre;
 
+  @Column 
+  private String imagenColonia; 
+
   @Column
   private String descripcion;
 
@@ -77,6 +80,14 @@ public class Colonia {
 
   public void setNombre(String nombre) {
     this.nombre = nombre;
+  }
+  
+  public String getImagenColonia() {
+    return imagenColonia;
+  }
+
+  public void setImagenColonia(String imagenColonia) {
+    this.imagenColonia = imagenColonia;
   }
 
   public String getDescripcion() {

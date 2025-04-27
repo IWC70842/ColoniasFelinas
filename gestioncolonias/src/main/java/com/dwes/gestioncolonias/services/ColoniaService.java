@@ -64,6 +64,7 @@ public class ColoniaService {
     Colonia colonia = coloniaRepository.findById(id).get();
 
     colonia.setNombre(request.getNombre());
+    colonia.setImagenColonia(request.getImagenColonia());
     colonia.setDescripcion(request.getDescripcion());
     colonia.setTelefono(request.getTelefono());
     colonia.setMovil(request.getMovil());
