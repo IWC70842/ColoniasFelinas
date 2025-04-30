@@ -1,5 +1,7 @@
 package com.dwes.gestioncolonias.services;
 
+import java.time.LocalDate;
+
 /**
  * Clase GatosService para la conexión de los gatos con el interface GatoRepository de JPA
  * 
@@ -60,20 +62,30 @@ public class GatosService {
   }
 
   /**
-   * Elimina un gato de la base de datos a partir de su identificador.
+   * Realiza un borrado lógico de un gato a partir de su identificador.
    *
    * @param id Identificador del gato que se desea eliminar.
    * @return Devuelte verdadero si la eliminación es exitosa o falso si no se
    *         encuentra un gato con el Id proporcionado.
    */
   public Boolean deleteGatoById(Long id) {
-    try {
-      gatoRepository.deleteById(id);
-      return true;
-    } catch (Exception e) {
-      return false;
+    Optional<Gato> optionalGato = gatoRepository.findById(id);
+
+    if (optionalGato.isPresent()) {
+        Gato gato = optionalGato.get();
+        gato.setFechaSalida(LocalDate.now());
+
+        try {
+            gatoRepository.save(gato);  // Intentamos guardar el gato
+            return true;
+        } catch (RuntimeException e) {
+            // Si ocurre un error al guardar, podemos registrar la excepción (opcional)
+            return false;
+        }
     }
-  }
+
+    return false;
+}
 
   /**
    * Actualiza los datos de un gato existente en la base de datos.
@@ -91,6 +103,9 @@ public class GatosService {
     gato.setSexo(request.getSexo());
     gato.setPelaje(request.getPelaje());
     gato.setTamano(request.getTamano());
+    gato.setVacunado(request.isVacunado());
+    gato.setCer(request.isCer());
+    gato.setSalud(request.calculaSalud(request.isVacunado(),request.isCer()));
     gato.setFechaEntrada(request.getFechaEntrada());
     gato.setFechaSalida(request.getFechaSalida());
     gato.setMotivoEntrada(request.getMotivoEntrada());

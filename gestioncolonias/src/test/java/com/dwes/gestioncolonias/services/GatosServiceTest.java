@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -158,12 +157,13 @@ class GatosServiceTest {
    */
   @Test
   void testDeleteGatoByIdHappyPath() {
-    doNothing().when(gatoRepository).deleteById(666L);
+    when(gatoRepository.findById(666L)).thenReturn(Optional.of(gato));
 
     boolean resultado = gatosService.deleteGatoById(666L);
 
     assertTrue(resultado);
-    verify(gatoRepository, times(1)).deleteById(666L);
+    assertNotNull(gato.getFechaSalida());
+    verify(gatoRepository, times(1)).save(gato);
   }
 
   /**
@@ -171,13 +171,15 @@ class GatosServiceTest {
    */
   @Test
   void testDeleteGatoByIdError() {
+    when(gatoRepository.findById(666L)).thenReturn(Optional.of(gato));
+
     doThrow(new RuntimeException("Error al eliminar"))
-        .when(gatoRepository).deleteById(666L);
+        .when(gatoRepository).save(gato);
 
     boolean resultado = gatosService.deleteGatoById(666L);
 
     assertFalse(resultado);
-    verify(gatoRepository, times(1)).deleteById(666L);
+    verify(gatoRepository, times(1)).save(gato);
   }
 
   /**
@@ -199,7 +201,7 @@ class GatosServiceTest {
     verify(gatoRepository, times(1)).findById(666L);
   }
 
-   /**
+  /**
    * Intentar actualizar un gato con un Id inexistente
    */
   @Test

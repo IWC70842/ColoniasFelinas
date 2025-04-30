@@ -65,7 +65,7 @@ public class GatosController {
   }
 
   /**
-   * Elimina un gato de la base de datos a partir de su identificador.
+   * Realiza un borrado lógico de un gato a partir de su identificador.
    *
    * @param id Identificador del gato que se desea eliminar.
    * @return Un mensaje de confirmación si la eliminación es exitosa o un mensaje
@@ -73,12 +73,12 @@ public class GatosController {
    */
   @DeleteMapping("/{id}")
   public String deleteGatoById(@PathVariable("id") Long id) {
-    boolean ok = gatosService.deleteGatoById(id);
+    boolean eliminado = gatosService.deleteGatoById(id);
 
-    if (ok) {
-      return "Gato con id " + id + " eliminado correctamente.";
+    if (eliminado) {
+      return "Gato con id " + id + " marcado como eliminado correctamente.";
     } else {
-      return "Error, gato con id " + id + " no ha podido ser eliminado.";
+      return "Error, gato con id " + id + " no ha podido ser marcado como eliminado.";
     }
   }
 

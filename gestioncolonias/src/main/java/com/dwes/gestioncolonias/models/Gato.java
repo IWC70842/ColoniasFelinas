@@ -57,6 +57,12 @@ public class Gato {
     @Column
     private Tamano tamano;
 
+    @Column
+    private Boolean vacunado; 
+
+    @Column
+    private Boolean cer;   
+
     @Enumerated(EnumType.STRING)
     @Column
     private Salud salud;
@@ -152,6 +158,22 @@ public class Gato {
       this.tamano = tamano;
     }
 
+    public boolean isVacunado() {
+      return vacunado;
+    }
+
+    public void setVacunado(boolean vacunado) {
+      this.vacunado = vacunado;
+    }
+
+    public boolean isCer() {
+      return cer;
+    }
+
+    public void setCer(boolean cer) {
+      this.cer = cer;
+    }
+
     public void setSalud(Salud salud){
       this.salud =salud;
     }
@@ -159,6 +181,16 @@ public class Gato {
     public Salud getSalud(){
       return salud;
     }
+
+    public Salud calculaSalud(boolean vacunado, boolean cer) {
+      if (vacunado && cer) {
+          return Salud.SANO;
+      } else if (vacunado || cer) {
+          return Salud.REGULAR;
+      } else {
+          return Salud.GRAVE;
+      }
+  }
 
     public LocalDate getFechaEntrada() {
       return fechaEntrada;

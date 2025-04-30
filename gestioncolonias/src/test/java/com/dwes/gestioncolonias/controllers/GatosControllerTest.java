@@ -77,7 +77,7 @@ public class GatosControllerTest {
 
     String resultado = gatosController.deleteGatoById(666L);
 
-    assertEquals("Gato con id 666 eliminado correctamente.", resultado);
+    assertEquals("Gato con id 666 marcado como eliminado correctamente.", resultado);
     verify(gatosService, times(1)).deleteGatoById(666L);
   }
 
@@ -90,7 +90,7 @@ public class GatosControllerTest {
 
     String resultado = gatosController.deleteGatoById(666L);
 
-    assertEquals("Error, gato con id 666 no ha podido ser eliminado.", resultado);
+    assertEquals("Error, gato con id 666 no ha podido ser marcado como eliminado.", resultado);
     verify(gatosService, times(1)).deleteGatoById(666L);
   }
 
@@ -101,7 +101,7 @@ public class GatosControllerTest {
   void testDeleteGatoByIdNulo() {
     String resultado = gatosController.deleteGatoById(null);
 
-    assertEquals("Error, gato con id null no ha podido ser eliminado.", resultado);
+    assertEquals("Error, gato con id null no ha podido ser marcado como eliminado.", resultado);
     verify(gatosService, times(1)).deleteGatoById(any());
   }
 
