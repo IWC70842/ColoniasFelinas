@@ -110,6 +110,8 @@ public class GatosService {
     gato.setFechaSalida(request.getFechaSalida());
     gato.setMotivoEntrada(request.getMotivoEntrada());
     gato.setMotivoSalida(request.getMotivoSalida());
+    gatoRepository.save(gato);
+
 
     return gato;
   }
