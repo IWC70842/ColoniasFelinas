@@ -58,10 +58,10 @@ public class Gato {
     private Tamano tamano;
 
     @Column
-    private Boolean vacunado; 
+    private boolean vacunado; 
 
     @Column
-    private Boolean cer;   
+    private boolean cer;   
 
     @Enumerated(EnumType.STRING)
     @Column

@@ -74,6 +74,8 @@ class GatosServiceTest {
     gato.setSexo(Sexo.MACHO);
     gato.setPelaje(Pelaje.CORTO);
     gato.setTamano(Tamano.MEDIANO);
+    gato.setVacunado(true);
+    gato.setCer(true);
     gato.setSalud(Salud.SANO);
     gato.setFechaEntrada(LocalDate.of(2024, 1, 1));
     gato.setFechaSalida(LocalDate.of(2025, 2, 1));
